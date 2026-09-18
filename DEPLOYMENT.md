@@ -1,5 +1,8 @@
 # Deployment Guide / 部署指南
 
+> ⚠️ CI/CD Status: Ready for deployment
+> Last updated: 2026-09-18
+
 ## GitHub Actions CI/CD Setup / GitHub Actions 持續部署設置
 
 ### Option 1: Cloudflare Pages (Recommended) / 方案一：Cloudflare Pages（推薦）
