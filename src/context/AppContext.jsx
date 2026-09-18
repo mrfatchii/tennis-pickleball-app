@@ -107,6 +107,19 @@ export const AppProvider = ({ children }) => {
 
   const deleteReview = (reviewId) => setReviews((prev) => prev.filter((r) => r.id !== reviewId))
 
+  const deleteMember = (memberId) => {
+    if (currentUser?.id === memberId) return
+    setMembers((prev) => prev.filter((m) => m.id !== memberId))
+    setConnections((prev) => prev.filter((c) => c.userA !== memberId && c.userB !== memberId))
+    setConnectRequests((prev) => prev.filter((r) => r.from !== memberId && r.to !== memberId))
+    setCourts((prev) => prev.map((c) => c.claimedBy === memberId ? { ...c, claimedBy: null } : c))
+  }
+
+  const deleteCourt = (courtId) => {
+    setCourts((prev) => prev.filter((c) => c.id !== courtId))
+    setReviews((prev) => prev.filter((r) => r.courtId !== courtId))
+  }
+
   const claimCourt = (courtId) => {
     setCourts((prev) => prev.map((c) => (c.id === courtId ? { ...c, claimedBy: currentUserId } : c)))
     showToast(t('courtMgmt.claimRequested'))
@@ -291,6 +304,8 @@ export const AppProvider = ({ children }) => {
     connectedMembers,
     addReview,
     deleteReview,
+    deleteMember,
+    deleteCourt,
     claimCourt,
     unclaimCourt,
     updateCourt,

@@ -10,7 +10,7 @@ export const CourtDetailPage = () => {
   const {
     t, L, lang, courtById, reviewsForCourt, courtRating, memberById,
     currentUser, currentUserId, addReview, deleteReview, claimCourt, unclaimCourt,
-    updateCourt, isConnected, connectionCount
+    updateCourt, isConnected, connectionCount, isAdmin
   } = useApp()
   const court = courtById(id)
   const [activePhoto, setActivePhoto] = useState(0)
@@ -24,6 +24,7 @@ export const CourtDetailPage = () => {
   const [editOpening, setEditOpening] = useState('')
   const [editAddress, setEditAddress] = useState('')
   const [editAddressZh, setEditAddressZh] = useState('')
+  const [deleteReviewConfirm, setDeleteReviewConfirm] = useState(null)
 
   if (!court) {
     return (
@@ -322,10 +323,10 @@ export const CourtDetailPage = () => {
                             {author?.name}
                           </Link>
                           <span className="review-date">{r.date}</span>
-                          {currentUserId === r.authorId && (
+                          {(currentUserId === r.authorId || isAdmin) && (
                             <button
                               className="review-delete"
-                              onClick={() => deleteReview(r.id)}
+                              onClick={() => setDeleteReviewConfirm(r.id)}
                               title={t('reviews.deleteReview')}
                             >
                               ✕
@@ -342,6 +343,28 @@ export const CourtDetailPage = () => {
             )}
           </div>
         </div>
+
+        {deleteReviewConfirm && (
+          <div className="modal-overlay" onClick={() => setDeleteReviewConfirm(null)}>
+            <div className="modal-content confirm-modal" onClick={e => e.stopPropagation()}>
+              <h3>{t('common.confirmDelete')}</h3>
+              <p>{lang === 'zh'
+                ? '確定要刪除這條評論嗎？此操作無法撤銷。'
+                : 'Are you sure you want to delete this review? This action cannot be undone.'}</p>
+              <div className="modal-actions">
+                <button className="btn-secondary" onClick={() => setDeleteReviewConfirm(null)}>
+                  {t('common.cancel')}
+                </button>
+                <button className="btn-danger" onClick={() => {
+                  deleteReview(deleteReviewConfirm)
+                  setDeleteReviewConfirm(null)
+                }}>
+                  {t('common.delete')}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         <aside className="court-sidebar">
           <div className="sidebar-card">
