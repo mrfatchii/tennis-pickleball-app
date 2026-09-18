@@ -46,6 +46,7 @@ jobs:
           directory: dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           wranglerVersion: '3'
+          productionBranch: main
 
       - name: Show preview URL
         run: |
