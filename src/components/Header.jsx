@@ -127,14 +127,22 @@ export const Header = ({ onNavigate }) => {
                       </div>
                     </div>
                     <div className="user-menu-divider" />
+                    {isAdmin && (
+                      <>
+                        <Link to="/admin" className="user-menu-item user-menu-admin" onClick={() => setUserMenuOpen(false)}>
+                          <span>👑</span> {t('nav.adminPanel')}
+                        </Link>
+                        <div className="user-menu-divider" />
+                      </>
+                    )}
                     <Link to={`/member/${currentUserId}`} className="user-menu-item" onClick={() => setUserMenuOpen(false)}>
                       <span>👤</span> {t('nav.myProfile')}
                     </Link>
+                    <Link to="/courts/manage" className="user-menu-item" onClick={() => setUserMenuOpen(false)}>
+                      <span>🎾</span> {t('nav.myCourts')}
+                    </Link>
                     <Link to="/marketplace/mine" className="user-menu-item" onClick={() => setUserMenuOpen(false)}>
                       <span>🛍</span> {t('nav.myListings')}
-                    </Link>
-                    <Link to="/courts/manage" className="user-menu-item" onClick={() => setUserMenuOpen(false)}>
-                      <span>⌖</span> {t('nav.manage')}
                     </Link>
                     <div className="user-menu-divider" />
                     <button
@@ -229,7 +237,7 @@ export const Header = ({ onNavigate }) => {
 }
 
 export const Footer = () => {
-  const { t, lang, setLang } = useApp()
+  const { t, lang, setLang, isAdmin, currentUser } = useApp()
   return (
     <footer className="site-footer">
       <div className="container footer-inner">
@@ -266,8 +274,11 @@ export const Footer = () => {
           <h4>{t('footer.community')}</h4>
           <Link to="/members">{t('nav.members')}</Link>
           <Link to="/messages">{t('nav.messages')}</Link>
-          <Link to="/courts/manage">{t('nav.manage')}</Link>
+          <Link to="/courts/manage">{t('nav.myCourts')}</Link>
           <Link to="/marketplace/mine">{t('nav.myListings')}</Link>
+          {isAdmin && (
+            <Link to="/admin" className="footer-admin-link">{t('nav.adminPanel')}</Link>
+          )}
         </div>
         <div className="footer-col">
           <h4>{t('footer.language')}</h4>
