@@ -212,6 +212,16 @@ input, select, textarea { font-family: inherit; font-size: 1rem; }
 }
 .footer-col a:hover, .footer-col .footer-link:hover { color: var(--lime); text-decoration: none; }
 
+.footer-admin-link {
+  display: flex !important;
+  align-items: center;
+  gap: 6px;
+  color: var(--lime) !important;
+  font-weight: 600;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
 .footer-lang {
   display: block; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
   color: rgba(255,255,255,0.5); padding: 6px 12px; border-radius: var(--radius);
