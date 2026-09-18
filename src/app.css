@@ -139,6 +139,14 @@ input, select, textarea { font-family: inherit; font-size: 1rem; }
   width: 100%; text-align: left; text-decoration: none;
 }
 .user-menu-item:hover { background: var(--bg-soft); text-decoration: none; }
+.user-menu-admin {
+  color: var(--forest) !important;
+  font-weight: 600;
+  background: rgba(var(--forest-rgb), 0.08) !important;
+}
+.user-menu-admin:hover {
+  background: rgba(var(--forest-rgb), 0.12) !important;
+}
 .user-menu-logout { color: var(--purple); }
 .user-menu-logout:hover { background: rgba(var(--purple-rgb), 0.06); }
 
