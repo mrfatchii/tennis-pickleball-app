@@ -1,0 +1,125 @@
+:root {
+  --navy: #1d1a2f;
+  --navy-light: #2a2640;
+  --navy-muted: #4a4564;
+  --forest: #3f6d4e;
+  --forest-dark: #2d5239;
+  --forest-light: #e8f5e9;
+  --lime: #8bd450;
+  --lime-dark: #7ac840;
+  --lime-light: #f0f9e6;
+  --purple: #965fd4;
+  --purple-dark: #734f9a;
+  --purple-light: #f5f0ff;
+  --teal: #2e9e8f;
+  --coral: #e76f51;
+  --amber: #e9a23b;
+  --red: #d9534f;
+  --amber-alt: #f0a500;
+
+  --navy-rgb: 29, 26, 47;
+  --forest-rgb: 63, 109, 78;
+  --lime-rgb: 139, 212, 80;
+  --purple-rgb: 150, 95, 212;
+  --purple-dark-rgb: 115, 79, 154;
+
+  --bg: #ffffff;
+  --bg-soft: #f7f7f9;
+  --bg-tint: #fbfbfd;
+  --surface: #ffffff;
+  --text: #23222b;
+  --text-secondary: #6b6879;
+  --text-muted: #9a97a8;
+  --border: #e7e5ee;
+  --border-strong: #d8d5e2;
+
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  --shadow-sm: 0 1px 2px rgba(29, 26, 47, 0.05), 0 2px 8px rgba(29, 26, 47, 0.05);
+  --shadow-md: 0 4px 14px rgba(29, 26, 47, 0.08), 0 2px 6px rgba(29, 26, 47, 0.05);
+  --shadow-lg: 0 12px 32px rgba(29, 26, 47, 0.14);
+
+  --font-sans: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang HK', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+
+  --container: 1200px;
+  --header-h: 64px;
+
+  --transition: 160ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--text);
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 8px;
+  border: 2px solid var(--bg);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
