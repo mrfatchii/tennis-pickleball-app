@@ -762,6 +762,32 @@ select:focus { border-color: var(--forest); outline: none; }
   border-top: 1px solid var(--border);
 }
 
+.claim-declaration {
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  border-radius: var(--radius);
+}
+.claim-declaration-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+.claim-checkbox {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: var(--forest);
+}
+.claim-declaration-text {
+  font-size: 0.85rem;
+  color: #92400e;
+  line-height: 1.5;
+}
+
 .form-stack { display: flex; flex-direction: column; gap: 14px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 

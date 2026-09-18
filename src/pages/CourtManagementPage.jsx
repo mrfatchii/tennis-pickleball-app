@@ -347,9 +347,10 @@ const ClaimNewModal = ({ onClose }) => {
   const navigate = useNavigate()
   const unclaimed = allCourts.filter((c) => !c.claimedBy)
   const [selected, setSelected] = useState(null)
+  const [agreed, setAgreed] = useState(false)
 
   const claim = () => {
-    if (!selected) return
+    if (!selected || !agreed) return
     claimCourt(selected)
     onClose()
     navigate(`/court/${selected}`)
@@ -380,10 +381,25 @@ const ClaimNewModal = ({ onClose }) => {
               </div>
             ))}
           </div>
+          <div className="claim-declaration">
+            <label className="claim-declaration-label">
+              <input
+                type="checkbox"
+                checked={agreed}
+                onChange={(e) => setAgreed(e.target.checked)}
+                className="claim-checkbox"
+              />
+              <span className="claim-declaration-text">
+                {lang === 'zh'
+                  ? '我確認我是該場地的合法管理者或得到管理者的授權，有權為此場地提供和管理資訊。'
+                  : 'I confirm that I am the legitimate manager of this court or have authorization from the manager to provide and manage information for this court.'}
+              </span>
+            </label>
+          </div>
         </div>
         <div className="modal-foot">
           <button className="btn btn-outline" onClick={onClose}>{t('common.cancel')}</button>
-          <button className="btn btn-lime" onClick={claim} disabled={!selected}>
+          <button className="btn btn-lime" onClick={claim} disabled={!selected || !agreed}>
             {t('courtMgmt.claim')}
           </button>
         </div>
