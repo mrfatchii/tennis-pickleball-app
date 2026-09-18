@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useApp } from './context/AppContext'
 import { Header, Footer } from './components/Header'
+import { ToastProvider } from './components/Toast'
+import ErrorBoundary from './components/ErrorBoundary'
 import { DiscoverPage } from './pages/DiscoverPage'
 import { CourtDetailPage } from './pages/CourtDetailPage'
 import { MembersPage } from './pages/MembersPage'
@@ -12,6 +14,7 @@ import { MarketplacePage, MarketplaceDetailPage, MyListingsPage } from './pages/
 import { CourtManagementPage } from './pages/CourtManagementPage'
 import { LoginPage } from './pages/LoginPage'
 import AdminPanelPage from './pages/AdminPanelPage'
+import NotFoundPage from './pages/NotFoundPage'
 
 const ProtectedRoute = ({ children }) => {
   const { currentUser } = useApp()
@@ -53,6 +56,7 @@ const AppRoutes = () => {
         <ProtectedRoute><CourtManagementPage /></ProtectedRoute>
       } />
       <Route path="/court/:id" element={<CourtDetailPage />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )
 }
@@ -82,17 +86,13 @@ const AppLoginShell = () => {
 export default function App() {
   const { currentUser } = useApp()
 
-  if (!currentUser) {
-    return (
-      <BrowserRouter>
-        <AppLoginShell />
-      </BrowserRouter>
-    )
-  }
-
   return (
-    <BrowserRouter>
-      <AppShell />
-    </BrowserRouter>
+    <ErrorBoundary>
+      <ToastProvider>
+        <BrowserRouter>
+          {!currentUser ? <AppLoginShell /> : <AppShell />}
+        </BrowserRouter>
+      </ToastProvider>
+    </ErrorBoundary>
   )
 }
