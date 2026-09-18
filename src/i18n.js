@@ -11,6 +11,7 @@ export const en = {
   nav: {
     discover: 'Discover',
     members: 'Members',
+    adminPanel: 'Admin Panel',
     groups: 'Groups',
     marketplace: 'Marketplace',
     messages: 'Messages',
@@ -424,6 +425,28 @@ export const en = {
     areaYouth: 'Youth',
     areaGroup: 'Group training',
     areaCompetition: 'Competition prep'
+  },
+  admin: {
+    welcome: 'Admin dashboard - manage the Courtside HK community',
+    overview: 'Overview',
+    members: 'Members',
+    courts: 'Courts',
+    listings: 'Listings',
+    groups: 'Groups',
+    reviews: 'Reviews',
+    manageMembers: 'Manage Members',
+    manageCourts: 'Manage Courts',
+    systemInfo: 'System Information',
+    version: 'Version',
+    lastUpdate: 'Last Update',
+    name: 'Name',
+    email: 'Email',
+    role: 'Role',
+    sports: 'Sports',
+    courtName: 'Court Name',
+    district: 'District',
+    sport: 'Sport',
+    status: 'Status'
   }
 }
 
@@ -433,6 +456,7 @@ export const zh = {
   nav: {
     discover: '探索場地',
     members: '會員',
+    adminPanel: '管理員面板',
     groups: '群組',
     marketplace: '二手市場',
     messages: '訊息',
@@ -846,6 +870,28 @@ export const zh = {
     areaYouth: '青少年',
     areaGroup: '小組訓練',
     areaCompetition: '比賽準備'
+  },
+  admin: {
+    welcome: '管理員儀表板 - 管理 Courtside HK 社群',
+    overview: '概覽',
+    members: '會員',
+    courts: '場地',
+    listings: '刊登',
+    groups: '群組',
+    reviews: '評論',
+    manageMembers: '管理會員',
+    manageCourts: '管理場地',
+    systemInfo: '系統資訊',
+    version: '版本',
+    lastUpdate: '最後更新',
+    name: '名稱',
+    email: '電郵',
+    role: '角色',
+    sports: '運動',
+    courtName: '場地名稱',
+    district: '地區',
+    sport: '運動',
+    status: '狀態'
   }
 }
 

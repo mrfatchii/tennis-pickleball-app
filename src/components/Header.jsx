@@ -13,16 +13,18 @@ const navItems = (t, currentUserId, isAdmin) => {
     base.push({ to: '/marketplace', label: t('nav.marketplace'), icon: 'marketplace' })
   }
   if (isAdmin) {
-    base.push({ to: '/members', label: t('nav.adminPanel') || 'Admin', icon: 'manage' })
-  } else {
-    base.push({ to: '/members', label: t('nav.members'), icon: 'members' })
+    base.push({ to: '/admin', label: t('nav.adminPanel'), icon: 'admin' })
   }
+  base.push({ to: '/members', label: t('nav.members'), icon: 'members' })
   return base
 }
 
 const Icons = {
   discover: (
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /></svg>
+  ),
+  admin: (
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
   ),
   members: (
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>

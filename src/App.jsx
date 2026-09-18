@@ -11,10 +11,18 @@ import { GroupsPage, GroupDetailPage } from './pages/GroupsPage'
 import { MarketplacePage, MarketplaceDetailPage, MyListingsPage } from './pages/MarketplacePage'
 import { CourtManagementPage } from './pages/CourtManagementPage'
 import { LoginPage } from './pages/LoginPage'
+import AdminPanelPage from './pages/AdminPanelPage'
 
 const ProtectedRoute = ({ children }) => {
   const { currentUser } = useApp()
   if (!currentUser) return <Navigate to="/login" replace />
+  return children
+}
+
+const AdminRoute = ({ children }) => {
+  const { currentUser, isAdmin } = useApp()
+  if (!currentUser) return <Navigate to="/login" replace />
+  if (!isAdmin) return <Navigate to="/" replace />
   return children
 }
 
@@ -25,6 +33,9 @@ const AppRoutes = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/members" element={<MembersPage />} />
       <Route path="/member/:id" element={<MemberProfilePage />} />
+      <Route path="/admin" element={
+        <AdminRoute><AdminPanelPage /></AdminRoute>
+      } />
       <Route path="/matching" element={
         <ProtectedRoute><MatchingPage /></ProtectedRoute>
       } />
