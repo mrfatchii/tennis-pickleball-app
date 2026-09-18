@@ -457,24 +457,148 @@ select:focus { border-color: var(--forest); outline: none; }
 }
 
 /* ─── LEAFLET MAP (CourtMap) ─────────────────────────────── */
-.court-leaflet-map {
-  height: 220px;
+.court-map-wrapper {
+  position: relative;
   margin-top: 12px;
-  border: 1.5px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
 }
+.court-leaflet-map {
+  height: 220px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+}
 .court-leaflet-map .leaflet-tile-pane {
-  filter: saturate(0.85) contrast(1.05);
+  filter: saturate(0.9) contrast(1.05);
+}
+.court-leaflet-map .leaflet-control-zoom {
+  border: none !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  border-radius: var(--radius);
+  overflow: hidden;
 }
 .court-leaflet-map .leaflet-control-zoom a {
   background: var(--surface);
   color: var(--text);
   border-color: var(--border);
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+}
+.court-leaflet-map .leaflet-control-zoom a:hover {
+  background: var(--bg-soft);
 }
 .court-leaflet-map .leaflet-control-attribution {
-  background: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.8);
   font-size: 10px;
+  padding: 2px 6px;
+}
+.court-leaflet-map .leaflet-control-attribution a { color: var(--forest); }
+
+/* Loading spinner */
+.court-map-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  z-index: 1000;
+}
+.court-map-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--border);
+  border-top-color: var(--forest);
+  border-radius: 50%;
+  animation: map-spin 0.8s linear infinite;
+}
+@keyframes map-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Error state */
+.court-map-error {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  z-index: 1000;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Custom tennis marker */
+.court-marker-wrapper { background: transparent !important; border: none !important; }
+.tennis-marker {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tennis-marker-inner {
+  width: 40px;
+  height: 40px;
+  background: var(--forest, #3f6d4e);
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  border: 3px solid white;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.tennis-marker:hover .tennis-marker-inner {
+  transform: rotate(-45deg) scale(1.1);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+}
+.tennis-marker-icon {
+  transform: rotate(45deg);
+  font-size: 18px;
+  line-height: 1;
+}
+.tennis-marker-pulse {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--forest, #3f6d4e);
+  opacity: 0.3;
+  animation: marker-pulse 2s ease-out infinite;
+  z-index: -1;
+}
+@keyframes marker-pulse {
+  0% { transform: scale(0.8); opacity: 0.4; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* Popup */
+.court-popup-container .leaflet-popup-content-wrapper {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  border: 1px solid var(--border);
+}
+.court-popup-container .leaflet-popup-tip {
+  background: var(--surface);
+}
+.court-popup {
+  padding: 8px 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 /* ─── VIEW TOGGLE ─────────────────────────────────────────── */
