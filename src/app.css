@@ -755,20 +755,70 @@ select:focus { border-color: var(--forest); outline: none; }
 
 .modal-lg { max-width: 680px; }
 
-.modal-head {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 20px 24px 0;
+.modal-map { max-width: 560px; }
+
+.court-map-single {
+  margin-bottom: 16px;
 }
-.modal-head h2 { font-size: 1.15rem; font-weight: 700; }
+
+.court-map-single .court-map-wrap {
+  height: 280px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.court-map-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.court-address {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.meta-pin {
+  font-size: 1.1rem;
+}
+
+.modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-head h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
 
 .modal-close {
-  background: none; border: none; color: var(--text-muted);
-  font-size: 1.2rem; cursor: pointer; padding: 4px 8px;
-  border-radius: var(--radius); transition: background 0.15s, color 0.15s;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius);
+  transition: background 0.15s, color 0.15s;
+  line-height: 1;
 }
-.modal-close:hover { background: var(--bg-soft); color: var(--text); }
 
-.modal-body { padding: 20px 24px; }
+.modal-close:hover {
+  background: var(--bg-soft);
+  color: var(--text);
+}
+
+.modal-body {
+  padding: 16px 20px;
+}
 
 .modal-hint {
   font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 16px;

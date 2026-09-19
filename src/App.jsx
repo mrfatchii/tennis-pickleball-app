@@ -129,9 +129,25 @@ const AppShell = () => {
 }
 
 const AppLoginShell = () => {
+  const [selectedCourtForMap, setSelectedCourtForMap] = useState(null)
+
+  useEffect(() => {
+    const handleShowCourtMap = (e) => {
+      setSelectedCourtForMap(e.detail)
+    }
+    window.addEventListener('showCourtMap', handleShowCourtMap)
+    return () => window.removeEventListener('showCourtMap', handleShowCourtMap)
+  }, [])
+
   return (
     <div className="app">
       <AppRoutes />
+      {selectedCourtForMap && (
+        <CourtMapModal 
+          court={selectedCourtForMap} 
+          onClose={() => setSelectedCourtForMap(null)} 
+        />
+      )}
     </div>
   )
 }
