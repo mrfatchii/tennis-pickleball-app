@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import { useApp } from './context/AppContext'
 import { Header, Footer } from './components/Header'
+import { CourtMap } from './components/CourtCard'
 import { ToastProvider } from './components/Toast'
 import ErrorBoundary from './components/ErrorBoundary'
 import { DiscoverPage } from './pages/DiscoverPage'
@@ -15,6 +17,42 @@ import { CourtManagementPage } from './pages/CourtManagementPage'
 import { LoginPage } from './pages/LoginPage'
 import AdminPanelPage from './pages/AdminPanelPage'
 import NotFoundPage from './pages/NotFoundPage'
+
+const CourtMapModal = ({ court, onClose }) => {
+  const { t, L, lang } = useApp()
+  
+  if (!court) return null
+  
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content modal-map" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-header">
+          <h3>{L(court.name, lang)}</h3>
+          <button className="modal-close" onClick={onClose}>×</button>
+        </div>
+        <div className="modal-body">
+          <div className="court-map-single">
+            <CourtMap courts={[court]} activeId={court.id} onSelect={() => {}} />
+          </div>
+          <div className="court-map-info">
+            <p className="court-address">
+              <span className="meta-pin">📍</span>
+              {L(court.address, lang)}
+            </p>
+            <a 
+              href={`https://www.google.com/maps?q=${court.lat},${court.lng}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-forest btn-sm"
+            >
+              {t('common.openInMaps')}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 const ProtectedRoute = ({ children }) => {
   const { currentUser } = useApp()
@@ -63,6 +101,15 @@ const AppRoutes = () => {
 
 const AppShell = () => {
   const { currentUser, lang } = useApp()
+  const [selectedCourtForMap, setSelectedCourtForMap] = useState(null)
+
+  useEffect(() => {
+    const handleShowCourtMap = (e) => {
+      setSelectedCourtForMap(e.detail)
+    }
+    window.addEventListener('showCourtMap', handleShowCourtMap)
+    return () => window.removeEventListener('showCourtMap', handleShowCourtMap)
+  }, [])
 
   return (
     <div className={`app lang-${lang}`}>
@@ -71,6 +118,12 @@ const AppShell = () => {
         <AppRoutes />
       </main>
       <Footer />
+      {selectedCourtForMap && (
+        <CourtMapModal 
+          court={selectedCourtForMap} 
+          onClose={() => setSelectedCourtForMap(null)} 
+        />
+      )}
     </div>
   )
 }
