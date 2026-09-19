@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate, HashRouter } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useApp } from './context/AppContext'
 import { Header, Footer } from './components/Header'
@@ -142,9 +142,9 @@ export default function App() {
   return (
     <ErrorBoundary>
       <ToastProvider>
-        <HashRouter base="/tennis-pickleball-app">
+        <BrowserRouter basename="/tennis-pickleball-app">
           {!currentUser ? <AppLoginShell /> : <AppShell />}
-        </HashRouter>
+        </BrowserRouter>
       </ToastProvider>
     </ErrorBoundary>
   )
