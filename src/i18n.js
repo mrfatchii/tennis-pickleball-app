@@ -200,6 +200,8 @@ export const en = {
     claimInfo: 'Claiming lets you manage the court listing — update photos, facilities and opening hours.',
     claimRequested: 'Claim request sent. The community will review your request.',
     claimedByYou: 'You manage this court',
+    claimedBadge: 'Claimed',
+    claimBtn: 'Claim court',
     manage: 'Manage',
     editListing: 'Edit listing',
     listingUpdated: 'Listing updated',
@@ -222,7 +224,13 @@ export const en = {
     edit: 'Edit',
     viewPage: 'View page',
     unclaim: 'Unclaim',
-    lit: 'Lit'
+    lit: 'Lit',
+    free: 'Free'
+  },
+  badge: {
+    coach: 'Coach',
+    admin: 'Admin',
+    player: 'Player'
   },
   members: {
     title: 'Member directory',
@@ -699,6 +707,8 @@ export const zh = {
     claimInfo: '認領後你可以管理場地資料 — 更新相片、設施及開放時間。',
     claimRequested: '認領申請已提交,社群會審核你的申請。',
     claimedByYou: '你正管理此場地',
+    claimedBadge: '已認領',
+    claimBtn: '認領場地',
     manage: '管理',
     editListing: '編輯資料',
     listingUpdated: '場地資料已更新',
@@ -721,7 +731,13 @@ export const zh = {
     edit: '編輯',
     viewPage: '查看頁面',
     unclaim: '取消認領',
-    lit: '有燈光'
+    lit: '有燈光',
+    free: '免費'
+  },
+  badge: {
+    coach: '教練',
+    admin: '管理員',
+    player: '球員'
   },
   members: {
     title: '會員目錄',
